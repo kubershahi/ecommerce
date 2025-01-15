@@ -1,4 +1,4 @@
-# E-commerce website for AP Project 
+# E-commerce website for Advanced Programming Project (Monsoon 2019: Aug 2019 - Dec 2019)
 Project built in Django version: 2.2.5
 
 To run the project on windows:
