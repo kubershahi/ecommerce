@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>abey.com</title>
+<div class= "container" >
+	<h3>Products</h3>
+	{% for instance in items %}
+	<hr>
+	<div class="row">
+	<div class= "col-md-8">
+	<div>
+		<div class="text-left"><h4><a href='/{{ instance.id }}/'>  {{instance.title|title}}</a></h4>
+			<br><a href='/{{ instance.id }}/'> <p><img src='/media/{{instance.image}}' class="img-responsive float-left" height= '180'></a></p></br>
+		</div>
+		
+		<div class="product-bottom text-center" >
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star-half-o"></i>
+			<i class="fa fa-star-o"></i>
+		<p> <h5>{{instance.summary}}</h5></p>
+		<p> <h6><i class="fa fa-inr"></i> {{instance.price}}</h6></p>
+		</div>
+	</div>	
+	</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% if items.has_other_pages %}
+<div class="text-center">
+	<div class= "col-10 offset-3 text-center pagination-set">
+		<nav aria-label="">
+			 <ul class="pagination">
+			    {% if items.has_previous %}
+			      <li><a href= "?page={{ items.previous_page_number }}">&laquo;</a></li>
+			    {% else %}
+			      <li class="disabled"><span>&laquo;</span></li>
+			    {% endif %}
+			    {% for i in items.paginator.page_range %}
+			      {% if items.number == i %}
+			        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+			      {% else %}
+			        <li><a href= "?page={{ i }}">{{ i }}</a></li>
+			      {% endif %}
+			    {% endfor %}
+			    {% if items.has_next %}
+			      <li><pre><a href="?page= {{ items.next_page_number }}">&raquo;</a></pre></li>
+			    {% else %}
+			      <li class="disabled"><span>&raquo;</span></li>
+			    {% endif %} 
+			 </ul>
+		</nav>
+	</div>
+</div>
+{% endif %}
+{% endblock content %}
+

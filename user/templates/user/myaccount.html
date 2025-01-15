@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<hr style="height:5px; visibility:hidden;" />
+<div class="container">
+  <div class="mx-auto" style="width: 300px;">
+    <form method='post'> {% csrf_token %}
+      <h2>My Account</h2>
+      {% for field in account_form %}
+          <p>
+              {{field.label_tag}}
+              {{field}}
+              {% comment %} {% if field.help_text %}
+                  <small style="color: grey;">{{field.help_text}}</small>
+              {% endif %} {% endcomment %}
+          </p>
+      {% endfor %}
+
+      {% for field in account_form %}
+        <p>
+          {% for error in field.errors %}
+            <p style="color: red">{{error}}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+
+      {% if account_form.non_field_errors %}
+          <div style="color: red">
+          <p>{{account_form.non_field_errors}}</p>
+          </div>
+      {% endif %}
+      {% if success_message %}
+        <p style="color:green; text-align: center;">{{success_message}}</p>
+      {% endif  %}
+      <div>
+      <button type="submit" class="btn btn-outline-info">Save Changes</button>
+      <a  class="btn btn-outline-info" href="{% url 'password_change' %}">Change Password</a>
+      </div>
+    </form>
+    <hr style="height:5px; visibility:hidden;" />
+    <hr style="height:5px; visibility:hidden;" /
+  </div>
+</div>
+{% endblock content %}
+

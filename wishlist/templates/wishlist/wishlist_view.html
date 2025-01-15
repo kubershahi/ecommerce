@@ -1,0 +1,38 @@
+{% extends 'base.html' %}}
+
+{% block content %}
+<title>Wishlist</title>
+<hr style="height:5px; visibility:hidden;" />
+<div class="container">
+{% if wishlist %}
+	{% for instance in wishlist %}
+		<hr>
+		<div class="row">	
+		<div class= "col-md-3">
+		<div class="product-top">
+			<div class="text-center"><h4><a href='/{{ instance.id }}/'>  {{instance.wishlist_items.title|title}}</a></h4>
+			<br><a href='/{{ instance.id }}/'> <p><img src='/media/{{instance.image}}' class="img-responsive" height= '180'></a></p></br>
+			</div>
+		<div class="product-bottom text-center" >
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star-half-o"></i>
+				<i class="fa fa-star-o"></i>
+
+
+			<p> <h5>{{instance.summary}}</h5></p>
+			<p> <h6>Rs. {{instance.price}}</h6></p>
+		</div>	
+		</div>
+		</div>
+		</div> 
+	{% endfor %}
+{% else %}
+	<div >
+	Looks like you have an empty wishlist.Start shopping!!!
+	</div>
+	<br>
+{% endif %} 
+</div>
+{% endblock content %}

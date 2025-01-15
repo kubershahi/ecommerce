@@ -1,0 +1,46 @@
+{% extends 'base.html' %}}
+
+{% block content %}
+
+<title> Cart</title>
+<hr style="height:5px; visibility:hidden;" />
+<div class="container">
+{% if cart %}
+	{% for instance in cart %}
+		<hr>
+		<div class="row">	
+		<div class= "col-md-3">
+		<div class="product-top">
+			<div class="text-center"><h4><a href='/{{ instance.id }}/'>  {{instance.title|title}}</a></h4>
+			<br><a href='/{{ instance.id }}/'> <p><img src='/media/{{instance.image}}' class="img-responsive" height= '180'></a></p></br>
+			<!-- <div class="overlay">
+			<button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye"></i></button>
+			<button type="button" class="btn btn-secondary" title="Add to Wishlist"><i class="fa fa-heart"></i></button>
+			<button type="button" id = "pr{{instance.id}}" class="btn btn-secondary cart" title="Add to Cart"><i class="fa fa-cart-arrow-down"></i></button>
+			</div> -->
+			</div> 
+		<div class="product-bottom text-center" >
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star-half-o"></i>
+				<i class="fa fa-star-o"></i>
+
+			<p> <h5>{{instance.summary}}</h5></p>
+			<p> <h6>Rs. {{instance.price}}</h6></p>
+		</div>	
+		</div>
+		</div>
+		</div> 
+	{% endfor %}
+	<hr>
+	<div>
+		<a href="{% url 'order-summary'%}" class="btn btn-outline-info">Buy Added Items</a>
+	</div>
+{% else %}
+	<div >
+	Looks like you have an empty cart. Start shopping!!!
+	</div>
+{% endif %} 
+</div>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Register</title>
+<hr style="height:5px; visibility:hidden;" />   
+<div class="container" >
+    <div class="mx-auto" style="width: 350px;">
+    <form method='post'> {% csrf_token %}
+        <h2> Register</h2>
+        <div class="">
+        {% for field in registration_form %}
+            <p>
+                {{field.label_tag}}
+                {{field}}
+                {% comment %} {% if field.help_text %}
+                    <small style="color: grey;">{{field.help_text}}</small>
+                {% endif %} {% endcomment %}
+
+                {% for error in field.errors %}
+                    <p style="color: red; ">{{error}}</p> 
+                {% endfor %}
+            </p>
+        {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-outline-info" >Register</button>
+    </form>
+    <hr style="height:5px; visibility:hidden;" />
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{{ message }}
+{% block content %}
+<title>Product Detail</title>
+<hr style="height:5px; visibility:hidden;" />
+<div class= "container">
+<h1>{{ object.title|title }} </h1> 
+
+<img src='/media/{{object.image}}' height = '230'>
+
+<p> Price : Rs. {{object.price}}</p>
+<p> {% if object.description %}{{ object.description }} {% endif %}</p>
+<p> {% if object.summary %}{{ object.summary }} {% endif %}</p>
+
+{% if object in user.wishlist_items.all %}
+<a href="{% url 'update_wishlist' object.id %}" class="btn btn-outline-info">Remove from Wishlist</a>
+{% else %}
+<a href="{% url 'update_wishlist' object.id %}" class="btn btn-outline-info">Add to Wishlist</a>
+{% endif %}
+{% if object in user.cart_items.all %}
+<a href="{% url 'update_cart' object.id %}" class="btn btn-outline-info">Remove from Cart</a>
+{% else %}
+<a href="{% url 'update_cart' object.id %}" class="btn btn-outline-info">Add to Cart</a>
+{% endif %}
+</div>
+
+{% endblock %} 
