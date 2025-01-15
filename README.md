@@ -1,9 +1,11 @@
-# E-commerce website for Advanced Programming Project (Monsoon 2019: Aug 2019 - Dec 2019)
-Project built in Django version: 2.2.5
+# E-commerce Website Built Using Django
 
-To run the project on windows:
+Project for Advanced Programming Course (Monsoon 2019: Aug 2019 - Dec 2019)
+Django version: 2.2.5
 
-1) Setup a virtual environment using cmd. On the path you want to make virtual environment type: python -m venv project
+To run the project on Windows:
+
+1) Set up a virtual environment using cmd. On the path you want to make virtual environment type: python -m venv project
       project is the name of the virtual environment now
 2) Activate the virtual environment and change current directory to the path where you have stored the project.
 3) Install the requirements.txt using pip.
